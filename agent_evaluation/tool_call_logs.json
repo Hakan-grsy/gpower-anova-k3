@@ -1,0 +1,192 @@
+[
+  {
+    "timestamp": "2026-10-20T16:26:43.944992",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.25,
+      "alpha": 0.05,
+      "power": 0.8,
+      "num_groups": 3
+    },
+    "response": {
+      "n_total": 159,
+      "actual_power": 0.8048872853010698,
+      "critical": 3.054004173787927,
+      "df1": 2,
+      "df2": 156,
+      "ncp": 9.9375
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.945497",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.1,
+      "alpha": 0.05,
+      "power": 0.95,
+      "num_groups": 4
+    },
+    "response": {
+      "n_total": 1724,
+      "actual_power": 0.9503691028282087,
+      "critical": 2.6100759104440003,
+      "df1": 3,
+      "df2": 1720,
+      "ncp": 17.240000000000002
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.947704",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.25,
+      "alpha": 0.01,
+      "power": 0.8,
+      "num_groups": 5
+    },
+    "response": {
+      "n_total": 275,
+      "actual_power": 0.8006673364126836,
+      "critical": 3.3893490771145616,
+      "df1": 4,
+      "df2": 270,
+      "ncp": 17.1875
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.948719",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.25,
+      "alpha": 0.05,
+      "power": 0.95,
+      "num_groups": 3
+    },
+    "response": {
+      "n_total": 252,
+      "actual_power": 0.9514887602242726,
+      "critical": 3.0320649162691873,
+      "df1": 2,
+      "df2": 249,
+      "ncp": 15.75
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.949235",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.1,
+      "alpha": 0.01,
+      "power": 0.8,
+      "num_groups": 4
+    },
+    "response": {
+      "n_total": 1552,
+      "actual_power": 0.8001904429531047,
+      "critical": 3.7942844342747155,
+      "df1": 3,
+      "df2": 1548,
+      "ncp": 15.520000000000003
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.950239",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.25,
+      "alpha": 0.01,
+      "power": 0.95,
+      "num_groups": 3
+    },
+    "response": {
+      "n_total": 336,
+      "actual_power": 0.9506718800226355,
+      "critical": 4.669447893536008,
+      "df1": 2,
+      "df2": 333,
+      "ncp": 21.0
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.951762",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.1,
+      "alpha": 0.05,
+      "power": 0.8,
+      "num_groups": 5
+    },
+    "response": {
+      "n_total": 1200,
+      "actual_power": 0.8006464011091071,
+      "critical": 2.3793763652706508,
+      "df1": 4,
+      "df2": 1195,
+      "ncp": 12.000000000000002
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.953297",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.1,
+      "alpha": 0.05,
+      "power": 0.95,
+      "num_groups": 3
+    },
+    "response": {
+      "n_total": 1548,
+      "actual_power": 0.9500866032792875,
+      "critical": 3.0015484702824797,
+      "df1": 2,
+      "df2": 1545,
+      "ncp": 15.480000000000002
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.953836",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.25,
+      "alpha": 0.01,
+      "power": 0.8,
+      "num_groups": 4
+    },
+    "response": {
+      "n_total": 256,
+      "actual_power": 0.8062799970732824,
+      "critical": 3.8602464914383563,
+      "df1": 3,
+      "df2": 252,
+      "ncp": 16.0
+    }
+  },
+  {
+    "timestamp": "2026-10-20T16:26:43.955367",
+    "duration_ms": 0.5,
+    "tool_name": "calculate_anova_a_priori",
+    "parameters": {
+      "f": 0.25,
+      "alpha": 0.01,
+      "power": 0.95,
+      "num_groups": 5
+    },
+    "response": {
+      "n_total": 400,
+      "actual_power": 0.9524917429769831,
+      "critical": 3.366955388696625,
+      "df1": 4,
+      "df2": 395,
+      "ncp": 25.0
+    }
+  }
+]

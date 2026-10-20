@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "specialty": "Anesteziyoloji ve Reanimasyon",
+    "question": "3 farklı anestezi ilacının uyanma süresine etkisini kıyaslayacağım. f=0.25 etki büyüklüğünü %80 güç ve 0.05 hata payıyla yakalamak için toplam kaç hastaya ihtiyacım var?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 3,
+      "effect_size_f": 0.25,
+      "alpha": 0.05,
+      "power": 0.80,
+      "expected_n_total": 159,
+      "expected_n_per_group": 53
+    }
+  },
+  {
+    "id": 2,
+    "specialty": "Kardiyoloji",
+    "question": "4 farklı antihipertansif tedavi protokolünün sistolik kan basıncındaki düşüş miktarını karşılaştıracağız. f=0.10 küçük etki büyüklüğü için %95 güç ve 0.05 anlamlılık düzeyinde toplam kaç hasta gereklidir?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 4,
+      "effect_size_f": 0.10,
+      "alpha": 0.05,
+      "power": 0.95,
+      "expected_n_total": 1724,
+      "expected_n_per_group": 431
+    }
+  },
+  {
+    "id": 3,
+    "specialty": "Endokrinoloji ve Metabolizma Hastalıkları",
+    "question": "Tip 2 diyabet hastalarında 5 farklı oral antidiyabetik rejimin 12. haftadaki HbA1c düzeyi değişimini inceleyeceğiz. f=0.25 etki büyüklüğü, 0.01 hata payı ve %80 güç şartıyla toplam kaç hasta randomize edilmelidir?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 5,
+      "effect_size_f": 0.25,
+      "alpha": 0.01,
+      "power": 0.80,
+      "expected_n_total": 275,
+      "expected_n_per_group": 55
+    }
+  },
+  {
+    "id": 4,
+    "specialty": "Ortopedi ve Travmatoloji",
+    "question": "Diz osteoartritinde 3 farklı fizik tedavi protokolünün eklem hareket açıklığı derecesine etkisini araştırıyoruz. f=0.25 etki büyüklüğü, 0.05 alfa ve %95 istatistiksel güç için toplam kaç hasta almalıyız?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 3,
+      "effect_size_f": 0.25,
+      "alpha": 0.05,
+      "power": 0.95,
+      "expected_n_total": 252,
+      "expected_n_per_group": 84
+    }
+  },
+  {
+    "id": 5,
+    "specialty": "Nöroloji",
+    "question": "Kronik migren hastalarında 4 farklı profilaksi ilacının aylık atak sayısı azalmasına etkisini kıyaslayacağız. f=0.10 etki boyutu, 0.01 hata payı ve %80 güç ile toplam örneklem büyüklüğü kaç olmalı?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 4,
+      "effect_size_f": 0.10,
+      "alpha": 0.01,
+      "power": 0.80,
+      "expected_n_total": 1552,
+      "expected_n_per_group": 388
+    }
+  },
+  {
+    "id": 6,
+    "specialty": "Tıbbi Onkoloji",
+    "question": "Kolorektal kanser hastalarında 3 farklı adjuvant kemoterapi rejiminin trombosit seviyelerine etkisini test edeceğiz. f=0.25, 0.01 alfa ve %95 güç şartıyla toplam kaç hasta gerekmektedir?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 3,
+      "effect_size_f": 0.25,
+      "alpha": 0.01,
+      "power": 0.95,
+      "expected_n_total": 336,
+      "expected_n_per_group": 112
+    }
+  },
+  {
+    "id": 7,
+    "specialty": "Çocuk Sağlığı ve Hastalıkları (Pediatri)",
+    "question": "Sağlıklı bebeklerde 5 farklı aşı kombinasyonunun 6. ay antikor titresi üzerindeki etkisini karşılaştırıyoruz. f=0.10 etki büyüklüğü, 0.05 alfa ve %80 güç parametreleriyle toplam kaç bebek çalışmaya alınmalıdır?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 5,
+      "effect_size_f": 0.10,
+      "alpha": 0.05,
+      "power": 0.80,
+      "expected_n_total": 1200,
+      "expected_n_per_group": 240
+    }
+  },
+  {
+    "id": 8,
+    "specialty": "Ruh Sağlığı ve Hastalıkları (Psikiyatri)",
+    "question": "Majör depresyon tanılı yetişkinlerde 3 farklı antidepresan ilacın 8. haftadaki Hamilton Depresyon Skoru değişimini kıyaslayacağız. f=0.10 etki boyutu, 0.05 alfa ve %95 güç için toplam kaç hasta gereklidir?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 3,
+      "effect_size_f": 0.10,
+      "alpha": 0.05,
+      "power": 0.95,
+      "expected_n_total": 1548,
+      "expected_n_per_group": 516
+    }
+  },
+  {
+    "id": 9,
+    "specialty": "Dermatoloji",
+    "question": "Plak psoriazis hastalarında 4 farklı topikal kremin sedef plak lezyon alanı küçülmesine etkisini araştırıyoruz. f=0.25 etki büyüklüğü, 0.01 alfa ve %80 güç için toplam kaç hasta gerekir?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 4,
+      "effect_size_f": 0.25,
+      "alpha": 0.01,
+      "power": 0.80,
+      "expected_n_total": 256,
+      "expected_n_per_group": 64
+    }
+  },
+  {
+    "id": 10,
+    "specialty": "Göğüs Hastalıkları",
+    "question": "Ağır KOAH hastalarında 5 farklı üçlü inhaler kombinasyonunun FEV1 solunum kapasitesi artışına etkisini kıyaslayacağız. f=0.25 etki büyüklüğü, 0.01 anlamlılık düzeyi ve %95 güç için toplam hasta sayısı ne olmalıdır?",
+    "ground_truth": {
+      "test_family": "anova-oneway",
+      "num_groups": 5,
+      "effect_size_f": 0.25,
+      "alpha": 0.01,
+      "power": 0.95,
+      "expected_n_total": 400,
+      "expected_n_per_group": 80
+    }
+  }
+]

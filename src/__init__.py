@@ -1,0 +1,3 @@
+"""
+G*Power Clone package
+"""

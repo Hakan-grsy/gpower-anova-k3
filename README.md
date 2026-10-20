@@ -187,8 +187,7 @@ pytest -v tests/test_mcp.py
 ## 8. Demo Video
 
 Süreç ve çalıştırma tanıtım videosu:
-- **Yerel Video Dosyası:** [docs/demo.mp4](docs/demo.mp4)
-- **Çevrimiçi İzleme:** `https://youtu.be/DEMO_VIDEO_PLACEHOLDER`
+- **Çevrimiçi İzleme:** `(https://youtu.be/lcqEsvlsWpI)`
 
 ---
 

@@ -1,113 +1,103 @@
 #!/usr/bin/env python3
 """
 CLI entry point for G*Power Clone
-Contract:
-  --test anova-oneway --mode <a-priori|post-hoc> --f <effect_size>
-  --alpha <alpha> --power <power> --num-groups <k> [--n <n_total>]
+Contract: 1.0.0
 """
 
 import sys
 import json
 import argparse
-from typing import Optional
 from src.engine import validate_inputs, compute_a_priori, compute_post_hoc
 
-
-class JsonArgumentParser(argparse.ArgumentParser):
-    """
-    Custom ArgumentParser that outputs a single-line JSON error
-    instead of printing usage to stderr on syntax/parsing errors.
-    """
-    def error(self, message):
-        print(json.dumps({"error": f"Invalid arguments: {message}"}))
-        sys.exit(1)
-
-
-def parse_args():
-    parser = JsonArgumentParser(
-        description="G*Power Clone: One-Way ANOVA Power and Sample Size Calculator",
-        add_help=False
-    )
-    parser.add_argument("--help", "-h", action="store_true", help="Show help")
-    parser.add_argument("--test", type=str, required=False, default="anova-oneway",
-                        help="Statistical test family / type (default: anova-oneway)")
-    parser.add_argument("--mode", type=str, required=False, default="a-priori",
-                        help="Analysis mode: 'a-priori' or 'post-hoc'")
-    parser.add_argument("--f", type=float, required=False, help="Effect size f")
-    parser.add_argument("--alpha", type=float, required=False, help="Alpha level")
-    parser.add_argument("--power", type=float, required=False, help="Target power (1 - beta)")
-    parser.add_argument("--num-groups", type=int, required=False, help="Number of groups (k)")
-    parser.add_argument("--n", type=int, required=False, default=None,
-                        help="Total sample size (for post-hoc mode)")
-
-    return parser.parse_args()
-
-
 def main():
-    if "--help" in sys.argv or "-h" in sys.argv:
-        print(json.dumps({
-            "usage": "--test anova-oneway --mode <a-priori|post-hoc> --f <effect_size> --alpha <alpha> --power <power> --num-groups <k> [--n <n_total>]"
-        }))
+    # Sözleşme Kuralı 2.2: Sürüm sorgusu
+    if "--version" in sys.argv:
+        print(json.dumps({"contract_version": "1.0.0", "name": "K3-Takimi", "engine": "Python 3.12"}))
         sys.exit(0)
 
-    try:
-        args = parse_args()
-    except Exception as e:
-        print(json.dumps({"error": str(e)}))
-        sys.exit(1)
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument("--test", type=str)
+    parser.add_argument("--mode", type=str)
+    parser.add_argument("--f", type=float)
+    parser.add_argument("--alpha", type=float)
+    parser.add_argument("--power", type=float)
+    parser.add_argument("--groups", type=int)   # num-groups yerine sözleşme gereği groups oldu
+    parser.add_argument("--n_total", type=int)  # Sözleşme gereği post-hoc için n_total oldu
 
+    # Tanınmayan parametreleri yakalamak için parse_known_args kullanıyoruz
+    args, unknown = parser.parse_known_args()
+
+    # Sözleşme Kuralı 2.4: Tanınmayan alan hatası (UNKNOWN_PARAM, Çıkış Kodu: 2)
+    if unknown:
+        field = unknown[0].lstrip('-')
+        print(json.dumps({"error": f"Taninmayan parametre: {unknown[0]}", "code": "UNKNOWN_PARAM", "field": field}))
+        sys.exit(2)
+
+    # Sözleşme Kuralı 2.4: Eksik parametre ve desteklenmeyen test hataları (Çıkış Kodu: 2)
+    if args.test is None:
+        print(json.dumps({"error": "--test parametresi eksik", "code": "MISSING_PARAM", "field": "test"}))
+        sys.exit(2)
+        
     if args.test != "anova-oneway":
-        print(json.dumps({"error": f"Unsupported test: '{args.test}'. Only 'anova-oneway' is supported."}))
-        sys.exit(1)
+        print(json.dumps({"error": f"Desteklenmeyen test: '{args.test}'", "code": "UNSUPPORTED", "field": "test"}))
+        sys.exit(2)
+
+    if args.mode is None:
+        print(json.dumps({"error": "--mode parametresi eksik", "code": "MISSING_PARAM", "field": "mode"}))
+        sys.exit(2)
 
     if args.mode not in ("a-priori", "post-hoc"):
-        print(json.dumps({"error": f"Unsupported mode: '{args.mode}'. Must be 'a-priori' or 'post-hoc'."}))
-        sys.exit(1)
+        print(json.dumps({"error": f"Desteklenmeyen mod: '{args.mode}'", "code": "UNSUPPORTED", "field": "mode"}))
+        sys.exit(2)
 
-    # Check for required numerical arguments
     if args.f is None:
-        print(json.dumps({"error": "Missing required argument: --f"}))
-        sys.exit(1)
+        print(json.dumps({"error": "--f parametresi eksik", "code": "MISSING_PARAM", "field": "f"}))
+        sys.exit(2)
     if args.alpha is None:
-        print(json.dumps({"error": "Missing required argument: --alpha"}))
-        sys.exit(1)
-    if args.num_groups is None:
-        print(json.dumps({"error": "Missing required argument: --num-groups"}))
-        sys.exit(1)
+        print(json.dumps({"error": "--alpha parametresi eksik", "code": "MISSING_PARAM", "field": "alpha"}))
+        sys.exit(2)
+    if args.groups is None:
+        print(json.dumps({"error": "--groups parametresi eksik", "code": "MISSING_PARAM", "field": "groups"}))
+        sys.exit(2)
 
+    # Motor üzerinden değer doğrulama (engine.py artık sözleşme uyumlu JSON döndürüyor)
     err = validate_inputs(
         f_val=args.f,
         alpha=args.alpha,
         power=args.power,
-        num_groups=args.num_groups,
+        groups=args.groups,
         mode=args.mode,
-        n_total=args.n
+        n_total=args.n_total
     )
+    
     if err is not None:
-        print(json.dumps({"error": err}))
-        sys.exit(1)
+        print(json.dumps(err))
+        sys.exit(2)
 
+    # Hesaplama Aşaması
     try:
         if args.mode == "a-priori":
             result = compute_a_priori(
                 f_val=args.f,
                 alpha=args.alpha,
                 target_power=args.power,
-                num_groups=args.num_groups
+                groups=args.groups
             )
         else:
             result = compute_post_hoc(
                 f_val=args.f,
                 alpha=args.alpha,
-                num_groups=args.num_groups,
-                n_total=args.n
+                groups=args.groups,
+                n_total=args.n_total
             )
+        
         print(json.dumps(result))
-        sys.exit(0)
-    except Exception as e:
-        print(json.dumps({"error": f"Calculation error: {str(e)}"}))
-        sys.exit(1)
+        sys.exit(0) # Başarılı çıkış
 
+    except Exception as e:
+        # İç hata durumunda çıkış kodu 1 olmalı
+        print(json.dumps({"error": "Hesaplama motoru ic hatasi", "code": "INTERNAL_ERROR", "field": "none"}))
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
